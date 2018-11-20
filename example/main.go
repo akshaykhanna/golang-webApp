@@ -5,10 +5,6 @@ import (
 	"net/http"
 )
 
-type myHandler struct {
-	greetings string
-}
-
 func main() {
 	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
 		writer.Write([]byte(fmt.Sprintf("hello world", )))
