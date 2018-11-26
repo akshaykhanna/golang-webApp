@@ -6,14 +6,30 @@ func main() {
 	fmt.Println("Power Grid console application")
 
 	powerPlantsCapacity := []int{20, 70, 86, 50}
-	utilization := 0.75
+	activePowerPlants := []int{0, 2}
+	gridLoad := 75.
 
-	totalUtil := 0.
-	for _, powerPlantCapacity := range powerPlantsCapacity {
-		totalUtil += utilization * float64(powerPlantCapacity)
+	var opiton int
+	fmt.Println("Enter your choice !")
+	fmt.Println("1 Power plant report")
+	fmt.Println("2 Power grid report")
+
+	fmt.Scan(&opiton)
+	fmt.Println(opiton)
+
+	switch {
+	case opiton == 1:
+		for index, value := range powerPlantsCapacity {
+			fmt.Printf("Plant %d capacity is %d. \n", index, value)
+		}
+		break
+	case opiton == 2:
+		effectivePowerOutput := 0.
+		for _, activePowerPlantIndex := range activePowerPlants {
+			effectivePowerOutput += float64(powerPlantsCapacity[activePowerPlantIndex])
+		}
+		fmt.Printf("effectivePowerOutput: %f \n", effectivePowerOutput)
+		fmt.Println("Utilization : ", (gridLoad/effectivePowerOutput)*100)
 	}
 
-	fmt.Println("powerPlantsCapacity :", powerPlantsCapacity)
-	fmt.Println("utilization :", utilization)
-	fmt.Println("totalUtil :", totalUtil)
 }
